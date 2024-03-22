@@ -187,7 +187,7 @@ $free = disk_free_space($dir);
 $pers =  (int) ($free/$total*100);
 $ds = @ini_get("disable_functions");
 $show_ds = (!empty($ds)) ? "<a href='?dir=$dir&aksi=disabfunc' class='ds'>$ds</a>" : "<a href='?dir=$dir&aksi=disabfunc'><font color=green>NONE</font></a>";
-$imgfol = "<img src='http://aux.iconspalace.com/uploads/folder-icon-256-1787672482.png' class='ico'></img>";
+$imgfol = "<img src='https://i.ibb.co/gvswgCb/folder-icon-256-1787672482.png' class='ico'></img>";
 $imgfile = "<img src='http://icons.iconarchive.com/icons/zhoolego/material/256/Filetype-Docs-icon.png' class='ico2'></img>";
 function formatSize( $bytes ){
   $types = array( 'B', 'KB', 'MB', 'GB', 'TB' );
@@ -612,7 +612,7 @@ function aksiMasdel($dir,$file,$imgfol,$imgfile){
     echo "</textarea><br/>";
   }else{
     echo "<form method='post'>
-      <h5>$imgfol Lokasi :</h5>
+      <h5>$imgfol Location :</h5>
       <input type='text' name='d_dir' value='$dir' class='form-control'><br/>
       <h5>$imgfile Nama File :</h5>
       <input type='text' name='d_file' placeholder='[Ex] index.php' class='form-control'><br/>
