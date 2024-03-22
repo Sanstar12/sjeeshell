@@ -2474,7 +2474,7 @@ function zipMenu($dir,$file){
               }elseif ($ext == "md"){
                 echo 'https://i.ibb.co/vjjrh6P/Domain-md-logo.png';
               }else{
-                echo 'http://icons.iconarchive.com/icons/zhoolego/material/256/Filetype-Docs-icon.png';
+                echo 'https://i.ibb.co/sKzrj4q/Filetype-Docs-icon.png';
                 
                 
                 
