@@ -2175,7 +2175,7 @@ function zipMenu($dir,$file){
                   <td>: '.$sof.'</td>
                 </tr>
                 <tr>
-                  <td>Sistem Operasi</td>
+                  <td>Sistem Operation</td>
                   <td> : '.$os.'</td>
                 </tr>
               </table>
